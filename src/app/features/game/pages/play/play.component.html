@@ -1,1 +1,24 @@
-<p>play works!</p>
+<section class="page">
+  <app-scoreboard></app-scoreboard>
+
+  <div class="boards">
+    <!-- Esquerda: área clicável com marcadores dos acertos -->
+    <div #leftImgWrap class="img" (click)="onClickLeft($event)">
+      <img *ngIf="(level$ | async) as level" [src]="level.originalUrl" alt="Original">
+      <ng-container *ngIf="(diffs$ | async) as diffs">
+        <div *ngFor="let d of diffs; trackBy: trackById"
+             class="marker"
+             [class.found]="d.found"
+             [style.left.%]="d.xPct * 100"
+             [style.top.%]="d.yPct * 100"
+             title="acerto">
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Direita: só a imagem alterada como referência visual -->
+    <div class="img">
+      <img *ngIf="(level$ | async) as level" [src]="level.alteredUrl" alt="Alterada">
+    </div>
+  </div>
+</section>

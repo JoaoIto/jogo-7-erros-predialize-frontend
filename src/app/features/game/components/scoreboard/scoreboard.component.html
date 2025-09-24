@@ -1,1 +1,6 @@
-<p>scoreboard works!</p>
+<header class="scoreboard">
+  <div class="pill">
+    Acertos: <strong>{{ (found$ | async) }}</strong>/<span>{{ (total$ | async) }}</span>
+  </div>
+  <button type="button" (click)="reset()">Reiniciar</button>
+</header>
