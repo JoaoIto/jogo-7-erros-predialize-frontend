@@ -24,20 +24,20 @@ Frontend do **“Jogo dos 7 Erros”** em **Angular 8**, consumindo a API do bac
 
 Como o Angular 8 foi lançado na era do npm 6, o npm moderno pode travar peer deps. Duas formas práticas de instalar:
 
-**Opção 1 — `.npmrc` local do projeto**
-
-1. Criar na raiz do frontend um arquivo `.npmrc` com:
-
+- Por causa da incompatibilidade, você pode somente rodar um comando:
+ 
+E isso vai dar uma dependência antiga ao openssl e assin você poderá rodar o projeto?
    ```
-   legacy-peer-deps=true
+   NODE_OPTIONS=--openssl-legacy-provider npx ng serve -o
    ```
-2. Rodar `npm install` (ou `npm ci`).
+- Porém essas dependências e problemas também foi usado uma ferramenta, uma lib, ``cross-env``, que no caso faz o cruzamento
+de variáveis e dependências para você usar, e assim é só preciso rodar o comando de:
 
-**Opção 2 — um comando só**
+```cmd
+npm start
+```
 
-```
-npm install --legacy-peer-deps
-```
+---
 
 > Se usar Angular Material, lembre-se de importar `BrowserAnimationsModule` e os módulos necessários do Material.
 
